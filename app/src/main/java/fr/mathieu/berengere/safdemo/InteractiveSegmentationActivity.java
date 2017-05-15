@@ -143,6 +143,7 @@ public class InteractiveSegmentationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 TextView infoTextView=(TextView)findViewById(R.id.textViewInfo);
                 infoTextView.setText(R.string.wait);
+                
                 segmentationBtn.setVisibility(View.GONE);
                 sendBtn.setVisibility(View.GONE);
 
@@ -213,7 +214,7 @@ public class InteractiveSegmentationActivity extends AppCompatActivity {
         }
 
         //get admin mail
-        String mail="";
+        String mail="berengere.ma@gmail.com";
         if(mail !=null &&mail.length()>0){
             //send email with original image and segmentation
             String[] TO = {mail};
