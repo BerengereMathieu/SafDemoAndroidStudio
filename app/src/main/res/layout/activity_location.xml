@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_weight="1"
+    android:id="@+id/informationLayout"
+    android:layout_alignParentStart="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:text="Localisation : ?"
+                android:textColor="@color/colorAccent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/locationTextView"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/information_height"
+    android:orientation="vertical"
+    android:layout_alignParentBottom="true"
+    android:layout_weight="0.5">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:useDefaultMargins="false"
+        android:alignmentMode="alignBounds"
+        android:columnCount="6">
+
+        <TextView
+            android:text="Error :"
+            android:layout_columnSpan="1"
+            android:textColor="@color/colorWarning"
+            android:layout_width="74dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewTag"
+            android:layout_row="0"
+            android:layout_column="0" />
+
+        <TextView
+            android:text="You are offline."
+            android:layout_columnSpan="2"
+            android:textColor="@color/colorBackground"
+            android:layout_width="150dp"
+            android:layout_height="76dp"
+            android:id="@+id/textViewInfo"
+            android:layout_row="0"
+            android:layout_column="1" />
+
+        <Button
+            android:text="Retry "
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            android:layout_row="0"
+            android:layout_column="4"
+            android:layout_marginTop="5px"
+            android:background="@android:color/background_dark"
+            android:textColor="@color/colorAccent"/>
+
+    </GridLayout>
+
+</LinearLayout>
+</RelativeLayout>

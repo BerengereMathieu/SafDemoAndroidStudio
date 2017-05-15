@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".InteractiveSegmentationActivity"
+    android:layout_alignParentStart="true">
+
+    <include layout="@layout/fragment_drawing_tools"/>
+    <include layout="@layout/fragment_color_palette"/>
+
+    <fr.mathieu.berengere.safdemo.DrawingView
+        android:id="@+id/imageViewSeeds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/information_height"
+    android:orientation="vertical"
+    android:layout_alignParentBottom="true">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/information_height"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textViewInfo"
+            android:textColor="@color/colorWarning"
+            android:text="Draw color strokes on objets."
+            android:layout_weight="0.2"/>
+
+        <Button
+            android:text="@string/segment"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:id="@+id/segmentButton"
+            android:layout_weight="0.4"
+            android:layout_marginTop="5px"
+            android:layout_marginRight="5px"
+            android:background="@android:color/background_dark"
+            android:textColor="@color/colorAccent"/>
+
+        <Button
+            android:text="@string/send"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:id="@+id/sendBoutton"
+            android:layout_weight="0.4"
+            android:layout_marginTop="5px"
+            android:layout_marginRight="5px"
+            android:background="@android:color/background_dark"
+            android:textColor="@color/colorAccent"/>
+    </LinearLayout>
+</LinearLayout>
+</RelativeLayout>

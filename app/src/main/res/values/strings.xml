@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Saf demo</string>
+    <string name="title_activity_take_picture">TakePictureActivity</string>
+    <string name="picture">Picture</string>
+    <string name="request_permission">Request permission</string>
+    <string name="camera_error">Camera error</string>
+    <string name="start_new">New</string>
+    <string name="brushSize">Brush size</string>
+    <string name="erase">Erase</string>
+    <string name="send">Send</string>
+    <string name="segment">Segment</string>
+    <string name="paint">Paint</string>
+    <string name="title_activity_check_photograph">CheckPhotographActivity</string>
+    <string name="sml">Small</string>
+    <string name="med">Medium</string>
+    <string name="lrg">Large</string>
+    <string name="segmentationDone">Segmentation done.</string>
+    <string name="wait">wait ...</string>
+    <string name="errorNbColors">Give at least two different colors !</string>
+    <string name="errorMailClient">There is no email client installed !</string>
+
+
+</resources>

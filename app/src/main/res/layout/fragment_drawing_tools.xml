@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="50dp"
+    android:layout_gravity="center_horizontal"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
+    <ImageButton
+        android:id="@+id/draw_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/brushSize"
+        android:src="@drawable/brush_size" />
+    <ImageButton
+        android:id="@+id/erase_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/erase"
+        android:src="@drawable/eraser" />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/leftZoomButton"
+        android:contentDescription="Left"
+        android:src="@drawable/left_arrow"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/upZoomButton"
+        android:contentDescription="Up"
+        android:src="@drawable/up_arrow"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/downZoomButton"
+        android:contentDescription="Down"
+        android:src="@drawable/down_arrow"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/rightZoomButton"
+        android:contentDescription="Right"
+        android:src="@drawable/right_arrow"/>
+</LinearLayout>
+
