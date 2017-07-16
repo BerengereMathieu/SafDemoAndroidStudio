@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -23,7 +24,8 @@ import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.io.File;
-public class LocationActivity extends AppCompatActivity {
+
+public class LocationActivity extends AppCompatActivity implements LocationListener {
 
     public final static String PARAMETER_SPOT_LOCATION = "fr.mathieu.berengere.safdemo.GetGuidLocation";
 
@@ -35,6 +37,59 @@ public class LocationActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+
+        if (location != null) {
+            latitude = location.getLatitude();
+            longitude = location.getLongitude();
+            //display location
+            TextView locationTextView = (TextView) findViewById(R.id.locationTextView);
+            locationTextView.setText("GPS coordinates : " + latitude + " , " + longitude);
+            //reset button
+            Button button = (Button) findViewById(R.id.button);
+            button.setText("Next");
+            button.setOnClickListener(
+                    new View.OnClickListener() {
+                        public void onClick(View v) {
+                            startTakePictureActivity();
+                        }
+                    }
+
+            );
+            //give indication
+            TextView textViewTag = (TextView) findViewById(R.id.textViewTag);
+            textViewTag.setText("Ready");
+            TextView textViewInfo = (TextView) findViewById(R.id.textViewInfo);
+            textViewInfo.setText("Now take a picture");
+
+        } else {
+
+            //give indication
+            TextView textViewTag = (TextView) findViewById(R.id.textViewTag);
+            textViewTag.setText("Something wrong with the location");
+        }
+
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+        //give indication
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
 
     private void checkConnection() {
         //check connection to download spot image
@@ -65,12 +120,13 @@ public class LocationActivity extends AppCompatActivity {
         boolean hasLocation = false;
         //get textview to get information to user
         TextView informationTextView = (TextView) findViewById(R.id.textViewInfo);
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             informationTextView.setText("No permission to use fine and coarse location.");
         } else {
             //get location manadger
             LocationManager locationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
-
+            informationTextView.setText("Request location update.");
             //first try to use network location provider
             if (!locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
                 //try to use passive location
@@ -82,53 +138,19 @@ public class LocationActivity extends AppCompatActivity {
                     } else {
                         //use GPs location provider
                         //search location using GPS
-                        Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                        if (location != null) {
-                            latitude = location.getLatitude();
-                            longitude = location.getLongitude();
-                            hasLocation = true;
-                        }
+                        locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER, this, null);
+
                     }
                 } else {
                     //search location using passive location provider
-                    Location location = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
-                    if (location != null) {
-                        latitude = location.getLatitude();
-                        longitude = location.getLongitude();
-                        hasLocation = true;
-                    }
+                    locationManager.requestSingleUpdate(LocationManager.PASSIVE_PROVIDER, this, null);
+
 
                 }
             } else {
-                //search location using gps
-                Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-                if (location != null) {
-                    latitude = location.getLatitude();
-                    longitude = location.getLongitude();
-                    hasLocation = true;
-                }
-            }
-        }
-        if (hasLocation) {
-            //display location
-            TextView locationTextView=(TextView) findViewById(R.id.locationTextView);
-            locationTextView.setText("GPS coordinates : " + latitude +" , " + longitude);
-            //reset button
-            Button button=(Button) findViewById(R.id.button);
-            button.setText("Next");
-            button.setOnClickListener(
-                    new View.OnClickListener() {
-                        public void onClick(View v) {
-                            startTakePictureActivity();
-                        }
-                    }
+                locationManager.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, this, null);
 
-            );
-            //give indication
-            TextView textViewTag=(TextView) findViewById(R.id.textViewTag);
-            textViewTag.setText("Ready");
-            TextView textViewInfo=(TextView) findViewById(R.id.textViewInfo);
-            textViewInfo.setText("Now take a picture");
+            }
         }
     }
 

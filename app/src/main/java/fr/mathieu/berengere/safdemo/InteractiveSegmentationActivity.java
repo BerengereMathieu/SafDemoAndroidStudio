@@ -143,7 +143,7 @@ public class InteractiveSegmentationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 TextView infoTextView=(TextView)findViewById(R.id.textViewInfo);
                 infoTextView.setText(R.string.wait);
-                
+
                 segmentationBtn.setVisibility(View.GONE);
                 sendBtn.setVisibility(View.GONE);
 
